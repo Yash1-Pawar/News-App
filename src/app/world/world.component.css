@@ -1,0 +1,8 @@
+#country-dd button {
+    background-color: var(--main-color);
+    border: none;
+}
+
+.dropdown-menu {
+    max-height: 40vh;
+}

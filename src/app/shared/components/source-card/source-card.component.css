@@ -1,0 +1,7 @@
+a{
+    cursor: pointer;
+}
+
+.card {
+    border: 1px solid var(--main-light-color);
+}

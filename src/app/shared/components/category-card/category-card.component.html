@@ -1,0 +1,21 @@
+<div class="row">
+    <div id="left" class="col-md-4">
+        <img class="img-fluid rounded" src="{{article.urlToImage}}" alt="...">
+    </div>
+    <div id="right" class="col-md-8">
+        <div class="header">
+            <div id="source" class="fs-5">{{article.source?.name}}</div>
+            <div id="title" class="fs-6">{{article.title}}</div>
+            <div id="description">{{article.description}}</div>
+        </div>
+
+        <div class="my-card-footer mt-2">
+            <span class="author-container">by <span class="author">{{article.author}}</span></span>
+            <div id="published">{{article.publishedAt?.substring(0, 10)}}</div>
+            <a id="arrow" class="btn btn-sm ms-auto" href="{{article.url}}" target="_blank">Full Coverage
+                <i class="bi bi-box-arrow-up-right ms-1"></i>
+            </a>
+        </div>
+    </div>
+    <!-- <hr class="mt-3 mb-0"> -->
+</div>

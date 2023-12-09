@@ -1,0 +1,46 @@
+<div class="container px-0" *ngIf="!isLoading">
+    <div #scroller class="row g-0">
+        <button #leftBtn *ngIf="showLeftBtn" id="left-btn" class="btn" (click)="onLeftBtnClick($event)">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left-short"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5" />
+            </svg>
+        </button>
+        <ng-content></ng-content>
+        <button #rightBtn *ngIf="showRightBtn" id="right-btn" class="btn" (click)="onRightBtnClick($event)">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right-short"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" />
+            </svg>
+        </button>
+    </div>
+</div>
+
+<div class="text-center" *ngIf="isLoading">
+    Loading....
+</div>
+
+
+<!-- You can use this component like below -->
+
+<!-- <app-horizontal-slider>
+    <div class="my-card col-lg-3 col-md-5 col-sm-7 p-2" *ngFor="let i of [1, 2, 3, 4 ,5 ,6]">
+        <div class="my-card-data p-2">
+            $ dynamic VIEW which needs to be displayed in card $
+        </div>
+    </div>
+</app-horizontal-slider> -->
+
+<!-- <app-horizontal-slider>
+    <div class="my-card col-lg-3 col-md-5 col-sm-7 p-2" *ngFor="let i of [1, 2, 3, 4 ,5 ,6]">
+        <div class="my-card-data p-2">
+            <h3 id="side-heading" class="m-0 text-center"> Top Headlines </h3>
+            <div class="" *ngFor="let topPick of articles | slice:0:3">
+                <hr style="margin: 0.5rem;">
+                <app-side-card [article]="topPick"></app-side-card>
+            </div>
+        </div>
+    </div>
+</app-horizontal-slider> -->

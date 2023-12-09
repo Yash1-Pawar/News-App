@@ -1,0 +1,6 @@
+#main-content {
+    height: fit-content;
+    min-height: 50vh;
+    background-color: var(--white-color);
+    border-radius: 1rem;
+}

@@ -1,0 +1,87 @@
+
+.my-card {
+    border-radius: 10px;
+}
+
+.my-card-data {
+    border: 1px solid var(--main-light-color);
+    border-radius: 1rem;
+}
+
+#main .row, #main-foryou .row, #aside .my-row {
+    background-color: var(--white-color);
+    height: fit-content;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.side-heading, .main-heading, .main-foryou-heading {
+    font-family: var(--font-Sans);
+    color: var(--main-color);
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 8px;
+    padding: 0 10px;
+}
+
+.main-heading hr {
+    color: var(--black-color);
+}
+
+.side-body {
+    /* margin-bottom: 1rem; */
+    padding: 0 10px 10px 10px;
+}
+
+.weather {
+    background-color: var(--white-color);
+    width: max-content;
+    border-radius: 1rem;
+}
+
+.bi-cloud-sun-fill {
+    font-size: xx-large;
+}
+
+.degree, .date {
+    color: var(--main-color);
+}
+
+#main-foryou {
+    position: relative;
+}
+
+#main-foryou::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 7%;
+    left: 50%;
+    width: 1px;
+    height: 84%;
+    background-color: var(--hr-color);
+}
+
+#main-your-topic .my-card-data {
+    border: 1px solid var(--main-light-color);
+    border-radius: 1rem;
+    background-color: var(--white-color);
+}
+
+#main-your-topic .side-heading span{
+    cursor: pointer !important;
+}
+
+#main-your-topic .side-heading span i::before {
+    transition: all .3s ease-in;
+}
+
+#main-your-topic .side-heading span:hover i::before {
+    transform: translateX(10px);
+}
+
+@media (max-width: 768px) {
+    #main-foryou::before {
+        display: none;
+    }
+}

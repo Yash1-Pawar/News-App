@@ -1,0 +1,214 @@
+<div *ngIf="isLoading">
+    <app-spinner></app-spinner>
+</div>
+
+<div class="container" *ngIf="!isLoading">
+    <div class="row mx-0 my-4">
+        <div class="col me-auto">
+            <p class="fs-4 fw-medium mb-0">Your briefing</p>
+            <p class="date fs-6 fw-light mb-0">{{todayDate | date:'EEEE, d MMMM'}}</p>
+        </div>
+        <div class="col-md-2 weather d-flex align-items-center">
+            <i class="bi bi-cloud-sun-fill me-3"></i>
+            <div class="weather-data ms-auto">
+                <p class="pt-1 pe-1 fs-6 fw-light mb-0">Your Local Weather</p>
+                <div class="degree fs-4 fw-medium mb-0">
+                    25<sup>•</sup>C
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <div id="main" class="col-lg-8">
+            <div class="row mx-0 gx-2 p-2">
+                <div class="main-heading">
+                    <h4>Top stories<i class="bi bi-chevron-right fs-5 fw-medium"></i></h4>
+                    <hr>
+                </div>
+                <app-card *ngFor="let article of articles | randomSlice:4" [article]="article"
+                    class="col-lg-6 col-md-6 col-sm-12 mb-3">
+                </app-card>
+                <div class="main-content-2">
+                    <div *ngIf="!isLoading">
+                        <div *ngIf="articles.length > 0; else noData">
+                            <div class="row my-3" *ngFor="let article of articles | randomSlice:2">
+                                <hr style="width: 95%;" class="mx-auto mt-0 mb-3">
+                                <app-category-card [article]="article"></app-category-card>
+                            </div>
+                        </div>
+                        <ng-template #noData>
+                            <h3 class="text-center my-3">No Data Available...</h3>
+                        </ng-template>
+                    </div>
+                    <app-spinner *ngIf="isLoading"></app-spinner>
+                </div>
+            </div>
+        </div>
+
+        <div id="aside" class="col-lg-4">
+            <div class="my-row p-2">
+                <h4 class="side-heading">Local News<i class="bi bi-chevron-right fs-5 fw-medium"></i></h4>
+                <div class="side-body">
+                    <div *ngFor="let topPick of articles | randomSlice:3">
+                        <hr class="my-3">
+                        <app-side-card [article]="topPick"></app-side-card>
+                    </div>
+                </div>
+            </div>
+            <div class="my-row p-2 mt-4">
+                <h4 class="side-heading">Picks for you<i class="bi bi-chevron-right fs-5 fw-medium"></i></h4>
+                <div class="side-body">
+                    <div *ngFor="let topPick of articles | randomSlice:5">
+                        <hr class="my-3">
+                        <app-side-card [article]="topPick"></app-side-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 mb-2">
+        <div class="col ms-1 me-auto">
+            <p class="fs-4 fw-medium mb-0">For You</p>
+            <p class="fs-6 fw-light mb-0">Recommended based on your interests</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="main-foryou" class="col-12">
+            <div class="row p-2 mx-0">
+                <div class="col-md-6">
+                    <div class="main-foryou-body">
+                        <div *ngFor="let topPick of articles | randomSlice:3">
+                            <app-side-card [article]="topPick"></app-side-card>
+                            <hr class="my-3">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="main-foryou-body">
+                        <div *ngFor="let topPick of articles | randomSlice:3">
+                            <app-side-card [article]="topPick"></app-side-card>
+                            <hr class="my-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 mb-2">
+        <div class="col ms-1 me-auto">
+            <p class="fs-4 fw-medium mb-0">Your topics</p>
+            <p class="fs-6 fw-light mb-0">Recommended based on your interests</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="main-your-topic" class="col-12">
+            <div class="row gx-3">
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="my-card-data">
+                        <h4 class="side-heading mt-3">
+                            <span (click)="forYouCardClick(forYouCards[0])">{{forYouCards[0]}}<i
+                                    class="bi bi-chevron-right fs-5 fw-medium"></i></span>
+                        </h4>
+                        <div class="side-body">
+                            <div *ngFor="let topPick of india | randomSlice:3">
+                                <hr class="my-3">
+                                <app-side-card [article]="topPick"></app-side-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="my-card-data">
+                        <h4 class="side-heading mt-3">
+                            <span (click)="forYouCardClick(forYouCards[1])">{{forYouCards[1]}}<i
+                                    class="bi bi-chevron-right fs-5 fw-medium"></i></span>
+                        </h4>
+                        <div class="side-body">
+                            <div *ngFor="let topPick of (world$ | async)?.articles | randomSlice:3">
+                                <hr class="my-3">
+                                <app-side-card [article]="topPick"></app-side-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="my-card-data">
+                        <h4 class="side-heading mt-3">
+                            <span (click)="forYouCardClick(forYouCards[2])">{{forYouCards[2]}}<i
+                                    class="bi bi-chevron-right fs-5 fw-medium"></i></span>
+                        </h4>
+                        <div class="side-body">
+                            <div *ngFor="let topPick of (entertainment$ | async)?.articles | randomSlice:3">
+                                <hr class="my-3">
+                                <app-side-card [article]="topPick"></app-side-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="my-card-data">
+                        <h4 class="side-heading mt-3">
+                            <span (click)="forYouCardClick(forYouCards[3])">{{forYouCards[3]}}<i
+                                    class="bi bi-chevron-right fs-5 fw-medium"></i></span>
+                        </h4>
+                        <div class="side-body">
+                            <div *ngFor="let topPick of (health$ | async)?.articles | randomSlice:3">
+                                <hr class="my-3">
+                                <app-side-card [article]="topPick"></app-side-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="my-card-data">
+                        <h4 class="side-heading mt-3">
+                            <span (click)="forYouCardClick(forYouCards[4])">{{forYouCards[4]}}<i
+                                    class="bi bi-chevron-right fs-5 fw-medium"></i></span>
+                        </h4>
+                        <div class="side-body">
+                            <div *ngFor="let topPick of (science$ | async)?.articles | randomSlice:3">
+                                <hr class="my-3">
+                                <app-side-card [article]="topPick"></app-side-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="my-card-data">
+                        <h4 class="side-heading mt-3">
+                            <span (click)="forYouCardClick(forYouCards[5])">{{forYouCards[5]}}<i
+                                    class="bi bi-chevron-right fs-5 fw-medium"></i></span>
+                        </h4>
+                        <div class="side-body">
+                            <div *ngFor="let topPick of (sports$ | async)?.articles | randomSlice:3">
+                                <hr class="my-3">
+                                <app-side-card [article]="topPick"></app-side-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 mb-2">
+        <div class="col ms-1 me-auto">
+            <p class="fs-4 fw-medium mb-0">Sources</p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <app-horizontal-slider>
+            <div class="my-card col-lg-4 col-md-5 col-sm-7 py-4 mx-3" *ngFor="let source of sources | slice:0:10">
+                <div class="">
+                    <app-source-card [source]="source"></app-source-card>
+                </div>
+            </div>
+        </app-horizontal-slider>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="row gx-2 d-flex align-items-center">
+    <div class="col-8 right">
+        <div id="source" class="">{{article.source?.name}}</div>
+        <a href="{{article.url}}" target="_blank">
+            <div id="title">{{article.title}}</div>
+        </a>
+        <div id="published" class="mt-2">{{article.publishedAt?.substring(0, 10)}}</div>
+    </div>
+    <div class="col-4 left d-flex justify-content-center align-items-center">
+        <img class="img-fluid rounded" src="{{article.urlToImage}}" alt="...">
+    </div>
+</div>

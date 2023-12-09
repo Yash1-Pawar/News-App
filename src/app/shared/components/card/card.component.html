@@ -1,0 +1,17 @@
+<div class="my-card" [ngClass]="{'active-card' : active}"
+    (mouseenter)="active = !active" (mouseleave)="active = !active">
+    <div class="img-container"><img class="my-card-img" src="{{article.urlToImage}}" alt="Image Not Available..."></div>
+    <div class="my-card-body m-2">
+        <div class="my-card-title">
+            <span id="title" appUnderline>{{article.title}}</span>
+        </div>
+        <div class="my-card-text mt-1">{{article.description}}</div>
+    </div>
+    <div class="my-card-footer m-2">
+        <span class="author-container">at <span class="author">{{article.source?.name}}</span></span>
+        <span class="published-at">{{article.publishedAt?.substring(0, 10)}}</span>
+        <a id="arrow" class="btn btn-sm mt-1" href="{{article.url}}" target="_blank">Read More
+            <i class="bi bi-box-arrow-up-right ms-1"></i>
+        </a>
+    </div>
+</div>

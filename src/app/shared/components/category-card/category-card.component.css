@@ -1,0 +1,58 @@
+img{
+    object-fit: cover;
+    /* width: 100%; */
+    height: 100%;
+}
+
+#right {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+}
+
+#source {
+    font: var(--font-Sans);
+    font-weight: 700;
+}
+
+.my-card-footer {
+    color: var(--gray-color);
+    font-size: 0.7rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#description {
+    font-size: 0.8rem;
+    color: var(--gray-color);
+}
+
+#published {
+    font: var(--font-roboto);
+}
+
+#arrow{
+    border: 1px solid;
+    color: var(--main-color);
+    background-color: var(--white-color);
+    transition: all .3s ease-out;
+}
+
+#arrow:hover {
+    background-color: var(--main-color);
+    color: var(--white-color);
+}
+
+.author {
+    color: var(--main-color);
+}
+
+#published::before {
+    content: "•";
+    color: inherit;
+    padding-left: 0.65rem;
+    padding-right: 0.75rem;
+    opacity: 0.8;
+}

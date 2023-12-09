@@ -1,0 +1,18 @@
+<div class="container my-4">
+    <div class="row mb-3">
+        <div id="main-content" class="col-lg-10 offset-lg-1">
+            <div *ngIf="!isLoading">
+                <div *ngIf="articles.length > 0; else noData">
+                    <div class="row my-3" *ngFor="let article of articles | randomSlice:10">
+                        <app-category-card [article]="article"></app-category-card>
+                        <hr class="mt-3 mb-0 mx-auto text-center" style="width: 95%;">
+                    </div>
+                </div>
+                <ng-template #noData>
+                    <h3 class="text-center my-3">No Data Available...</h3>
+                </ng-template>
+            </div>
+            <app-spinner *ngIf="isLoading"></app-spinner>
+        </div>
+    </div>
+</div>

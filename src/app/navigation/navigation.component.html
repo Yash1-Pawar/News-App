@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">
+            <img src="../../assets/images/LOGO.png" alt="Logo" width="40" height="40"
+                class="d-inline-block align-text-top">
+        </a>
+        <div class="offcanvas offcanvas-end" aria-labelledby="offcanvasRightLabel" tabindex="-1" id="offcanvasRight">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">YP News</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" routerLink="home" routerLinkActive="active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="india" routerLinkActive="active">India</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="world" routerLinkActive="active">World</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="business" routerLinkActive="active">Business</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="technology" routerLinkActive="active">Technology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="entertainment" routerLinkActive="active">Entertainment
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="sports" routerLinkActive="active">Sports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="science" routerLinkActive="active">Science</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="health" routerLinkActive="active">Health</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="d-flex align-items-center">
+            <input [(ngModel)]="searchText" id="search-bar" (keydown)="search($event)" class="form-control me-4" type="search" placeholder="Search">
+            <div id="theme" class="navbar-right ms-auto me-3" (click)="changeTheme()">
+                <i *ngIf="theme === 'dark-mode'" class="bi bi-brightness-high-fill fs-3 ms-auto"></i>
+                <i *ngIf="theme === 'light-mode'" class="bi bi-moon-stars-fill fs-4 ms-auto"></i>
+            </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight" aria-controls="offcanvasRight">
+            <span><i class="bi bi-list"></i></span>
+        </button>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

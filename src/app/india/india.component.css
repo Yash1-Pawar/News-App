@@ -1,0 +1,28 @@
+
+#arrow{
+    position: relative;
+    border: 1px solid;
+    overflow: hidden;
+    color: var(--main-color);
+}
+
+#arrow::before{
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--main-color);
+    transition: all .2s ease-in;
+}
+
+#arrow:hover::before {
+    height: 100%;
+    width: 100%;
+}
+
+#arrow:hover {
+    color: var(--white-color);
+}
